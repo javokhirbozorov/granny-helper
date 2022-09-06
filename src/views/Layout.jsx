@@ -1,5 +1,6 @@
 const React = require('react');
 
+
 function Layout({ title, children }) {
 
   return (
@@ -58,4 +59,5 @@ function Layout({ title, children }) {
 }
 
 module.exports = Layout;
+
 
