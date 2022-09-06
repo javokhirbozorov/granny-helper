@@ -10,6 +10,10 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 
 
+const signUpRoute = require('./src/routes/signUpRoute');
+
+app.use('/sign-up', signUpRoute);
+
 // express settings
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, './public')));
