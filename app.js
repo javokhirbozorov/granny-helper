@@ -1,15 +1,39 @@
 require('@babel/register');
 
-const ReactDOMServer = require('react-dom/server');
+// npm
 const express = require('express');
+const path = require('path');
 
+
+// express init
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-app.get('/', (req, res) => {
-  res.send('<h1>HOME</h1>');
-});
 
+// express settings
+app.use(express.urlencoded({ extended: true }));
+app.use(express.static(path.join(__dirname, './public')));
+app.use(express.json());
+
+
+// import routes
+const MainPage = require('./src/routes/mainPageRoute');
+const GrannyMainPage = require('./src/routes/homeGrannyRoute');
+const GrannyProfile = require('./src/routes/grannyProfileRoute');
+
+
+// App Main Address
+const granny = 'granny.com';
+
+
+// init routes
+app.use('/', MainPage);
+app.use(`/${granny}/main`, GrannyMainPage);
+app.use(`/${granny}/profile`, GrannyProfile);
+
+
+
+// app listener
 app.listen(PORT, () => {
-  console.log('server has started on port:', PORT);
+  console.log(`Server has started on port: ${PORT}\n`);
 });
