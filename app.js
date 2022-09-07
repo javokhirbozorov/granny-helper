@@ -1,11 +1,13 @@
 require('@babel/register');
 require('dotenv').config();
+
 const session = require('express-session');
 const FileStore = require('session-file-store')(session);
+
 // npm
 const express = require('express');
 const path = require('path');
-
+const { sequelize } = require('./db/models');
 
 // express init
 const app = express();
@@ -15,6 +17,7 @@ const PORT = process.env.PORT || 3000;
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, './public')));
 app.use(express.json());
+
 
 // создание конфига для куки
 const sessionConfig = {
@@ -42,10 +45,10 @@ const GrannyMainPage = require('./src/routes/homeGrannyRoute');
 const GrannyProfile = require('./src/routes/grannyProfileRoute');
 const { sequelize } = require('./db/models');
 
+const grandchildRouter = require('./src/routes/grandchildRouter');
 
 // App Main Address
 const granny = 'granny.com';
-
 
 // init routes
 app.use('/sign-up', signUpRoute);
@@ -54,14 +57,21 @@ app.use(`/${granny}/main`, GrannyMainPage);
 app.use(`/${granny}/profile`, GrannyProfile);
 
 app.use('/login', loginRouter);
-
 //ручка для выхода пользователя с уничтожением куки и файла сессии
 app.use('/logout', logoutRoute);
 
+app.use('/', grandchildRouter);
 
 // app listener
 
 app.listen(PORT, async () => {
-  console.log(`Server has started on port: ${PORT}\n`);
-  await sequelize.authenticate();
+
+  console.log(`Server starting on PORT => ${PORT}`);
+  try {
+    await sequelize.authenticate();
+    console.log('Connect sequelize');
+  } catch (error) {
+    console.error(error);
+  }
 });
+
