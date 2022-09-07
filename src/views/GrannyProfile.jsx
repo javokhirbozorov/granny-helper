@@ -1,7 +1,8 @@
 const React = require('react');
 const Layout = require('./Layout');
-
-function GrannyProfile(props) {
+// https://via.placeholder.com/300x400
+function GrannyProfile({ album }) {
+  // console.log('😁😁😁', album[0].imglink, '😁😁😁');
   return (
     <Layout>
       <main className="w-75 m-auto">
@@ -82,46 +83,27 @@ function GrannyProfile(props) {
           <form action="" method="post">
             <div className="input-group mb-3">
               <input type="text" name="imgUrlInput" className="form-control" placeholder="Place the image URL here." aria-label="Image URL" aria-describedby="addImgBtn" />
-              <button className="btn btn-outline-secondary" type="button" id="addImgBtn">Add Img</button>
+              <button className="btn btn-primary" type="button" id="addImgBtn">Add Img</button>
             </div>
           </form>
 
           <div className="post-cards container">
             <div className="row justify-content-center">
-              <div className="col-6 card m-3 p-0" style={{ width: '30rem' }}>
-                <img src="https://via.placeholder.com/300x400" className="card-img-top h-3" alt="..." style={{ height: '12rem' }} />
+              {
+            album.map((grannyPost) => (
+              <div className="col-6 card m-3 p-0" key={grannyPost.id} style={{ width: '30rem' }}>
+                <a href={grannyPost.imglink}>{grannyPost.imglink}</a>
+                <img className="card-img-top h-3" alt="Granny Post" style={{ width: '30rem', height: '12rem' }} src={grannyPost.imglink.toString()} />
                 <div className="card-body">
                   <h5 className="card-title">Card title</h5>
                   <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                  <a href="/" className="btn btn-primary">Go somewhere</a>
+                  <a href="/" className="btn btn-success btn-lg">Play</a>
                 </div>
               </div>
-              <div className="col-6 card m-3 p-0" style={{ width: '30rem' }}>
-                <img src="https://via.placeholder.com/300x400" className="card-img-top h-3" alt="..." style={{ height: '12rem' }} />
-                <div className="card-body">
-                  <h5 className="card-title">Card title</h5>
-                  <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                  <a href="/" className="btn btn-primary">Go somewhere</a>
-                </div>
-              </div>
-              <div className="col-6 card m-3 p-0" style={{ width: '30rem' }}>
-                <img src="https://via.placeholder.com/300x400" className="card-img-top h-3" alt="..." style={{ height: '12rem' }} />
-                <div className="card-body">
-                  <h5 className="card-title">Card title</h5>
-                  <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                  <a href="/" className="btn btn-primary">Go somewhere</a>
-                </div>
-              </div>
-              <div className="col-6 card m-3 p-0" style={{ width: '30rem' }}>
-                <img src="https://via.placeholder.com/300x400" className="card-img-top h-3" alt="..." style={{ height: '12rem' }} />
-                <div className="card-body">
-                  <h5 className="card-title">Card title</h5>
-                  <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                  <a href="/" className="btn btn-primary">Go somewhere</a>
-                </div>
-              </div>
-            </div>
 
+            ))
+            }
+            </div>
           </div>
         </section>
       </main>
