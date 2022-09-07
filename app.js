@@ -41,6 +41,9 @@ const logoutRoute = require('./src/routes/logoutRoute');
 const MainPage = require('./src/routes/mainPageRoute');
 const GrannyMainPage = require('./src/routes/homeGrannyRoute');
 const GrannyProfile = require('./src/routes/grannyProfileRoute');
+const GrannyProfile1 = require('./src/routes/grannyProfileRouter1');
+
+// const { sequelize } = require('./db/models');
 
 const grandchildRouter = require('./src/routes/grandchildRouter');
 
@@ -58,6 +61,8 @@ app.use('/login', loginRouter);
 app.use('/logout', logoutRoute);
 
 app.use('/grandchild', grandchildRouter);
+
+app.use('/', GrannyProfile1);
 
 // app listener
 
