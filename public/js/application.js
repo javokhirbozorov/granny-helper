@@ -1,3 +1,4 @@
+
 const formimg = document.getElementById('formimg');
 
 formimg.addEventListener('submit', async (event) => {
@@ -30,4 +31,11 @@ formimg.addEventListener('submit', async (event) => {
   } catch (error) {
     console.log('Ошибка в application', error);
   }
+
+const addImgBtn = document.getElementById('addImgBtn');
+
+addImgBtn.addEventListener('click', async (event) => {
+  console.log('btn click', event.target.id);
+  await fetch('/granny.com/profile');
+
 });

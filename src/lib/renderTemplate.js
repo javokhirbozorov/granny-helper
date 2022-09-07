@@ -3,7 +3,6 @@ require('@babel/register');
 const React = require('react');
 const ReactDOMServer = require('react-dom/server');
 
-
 const renderTemplate = (reactEl, props, res) => {
   const el = React.createElement(reactEl, props);
 
@@ -12,7 +11,6 @@ const renderTemplate = (reactEl, props, res) => {
   res.write('<!DOCTYPE html>');
   res.write(html);
   res.end();
-}
-
+};
 
 module.exports = renderTemplate;

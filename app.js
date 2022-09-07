@@ -60,7 +60,7 @@ app.use('/login', loginRouter);
 // ручка для выхода пользователя с уничтожением куки и файла сессии
 app.use('/logout', logoutRoute);
 
-app.use('/', grandchildRouter);
+app.use('/grandchild', grandchildRouter);
 
 app.use('/', GrannyProfile1);
 

@@ -1,22 +1,23 @@
 const React = require('react');
 const Layout = require('./Layout');
-
-function GrannyProfile(props) {
+// https://via.placeholder.com/300x400
+function GrannyProfile({ album }) {
+  console.log('😁😁😁', album[0].imglink, '😁😁😁');
   return (
     <Layout>
-      <main>
-        <section className=" container hero d-flex justify-content-around" id="hero">
+      <main className="w-75 m-auto">
+        <section className="container hero d-flex justify-content-between" id="hero">
           <div className="profile-img col-3">
-            <img src="https://via.placeholder.com/150" className="profile-img" alt="" srcSet="" />
-            <p className="username">User Name</p>
+            <img src="https://via.placeholder.com/150" className="profile-img m-auto" alt="" srcSet="" />
+            <p className="username text-center">User Name</p>
           </div>
 
           <div className="stats d-inline-flex justify-content-between">
-            <div className="col-3 friend-count">
+            <div className="col-3 friend-count d-flex flex-column align-items-center m-5">
               <p>Friends</p>
               <p className="counter">0</p>
             </div>
-            <div className="col-3 Grandchild-count">
+            <div className="col-3 grandchild-count d-flex flex-column align-items-center m-5">
               {' '}
               <p>Grandchildren</p>
               <p className="counter">0</p>
@@ -76,24 +77,38 @@ function GrannyProfile(props) {
 
         </section>
 
-        <section className=" container w-75 post-section">
+        <section className="container post-section">
           <hr />
           <hr />
-          <form action="" method="post">
-            <div className="input-group mb-3">
+          <form action="" method="POST">
+            {/* <div className="input-group mb-3">
               <input type="text" name="imgUrlInput" className="form-control" placeholder="Place the image URL here." aria-label="Image URL" aria-describedby="addImgBtn" />
-              <button className="btn btn-outline-secondary" type="button" id="addImgBtn">Add Img</button>
+              <button className="btn btn-primary" type="button" id="addImgBtn">Add Img</button>
+            </div> */}
+            <div className="mb-3 input-group ">
+              <label htmlFor="formFileMultiple" className="form-label">
+                Uplad photos here
+                <input className="form-control" type="file" id="formFileMultiple" multiple />
+              </label>
             </div>
+            <button className="btn btn-primary" type="button" id="addImgBtn">Add</button>
           </form>
 
           <div className="post-cards container">
-            <div className="card col-6" style={{ width: '18rem', height: '8rem' }}>
-              <img src="https://via.placeholder.com/150" className="card-img-top h-3" alt="..." style={{ height: '12rem' }} />
-              <div className="card-body">
-                <h5 className="card-title">Card title</h5>
-                <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                <a href="/" className="btn btn-primary">Go somewhere</a>
+            <div className="row justify-content-center">
+              {
+            album.map((grannyPost) => (
+              <div className="col-6 card m-3 p-0" key={grannyPost.id} style={{ width: '30rem' }}>
+                <img src={grannyPost.imglink} className="card-img-top h-3" alt="Granny Post" style={{ width: '30rem', height: '12rem' }} />
+                <div className="card-body">
+                  <h5 className="card-title">Card title</h5>
+                  <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                  <a href="/" className="btn btn-success btn-lg">Play</a>
+                </div>
               </div>
+
+            ))
+            }
             </div>
           </div>
         </section>
