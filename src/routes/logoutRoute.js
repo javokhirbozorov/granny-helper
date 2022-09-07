@@ -5,7 +5,7 @@ const router = require('express').Router();
 
 router.get('/', async (req, res) => {
   try {
-    if (req.session.granny || req.session.grandchild) {
+    if (req.session.user) {
       req.session.destroy(() => {
         res.clearCookie('grannyhelper');
         res.redirect('/');
