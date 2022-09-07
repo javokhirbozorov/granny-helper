@@ -4,19 +4,19 @@ const Layout = require('./Layout');
 function GrannyProfile(props) {
   return (
     <Layout>
-      <main>
-        <section className=" container hero d-flex justify-content-around" id="hero">
+      <main className="w-75 m-auto">
+        <section className="container hero d-flex justify-content-between" id="hero">
           <div className="profile-img col-3">
-            <img src="https://via.placeholder.com/150" className="profile-img" alt="" srcSet="" />
-            <p className="username">User Name</p>
+            <img src="https://via.placeholder.com/150" className="profile-img m-auto" alt="" srcSet="" />
+            <p className="username text-center">User Name</p>
           </div>
 
           <div className="stats d-inline-flex justify-content-between">
-            <div className="col-3 friend-count">
+            <div className="col-3 friend-count d-flex flex-column align-items-center m-5">
               <p>Friends</p>
               <p className="counter">0</p>
             </div>
-            <div className="col-3 Grandchild-count">
+            <div className="col-3 grandchild-count d-flex flex-column align-items-center m-5">
               {' '}
               <p>Grandchildren</p>
               <p className="counter">0</p>
@@ -76,7 +76,7 @@ function GrannyProfile(props) {
 
         </section>
 
-        <section className=" container w-75 post-section">
+        <section className="container post-section">
           <hr />
           <hr />
           <form action="" method="post">
@@ -87,14 +87,41 @@ function GrannyProfile(props) {
           </form>
 
           <div className="post-cards container">
-            <div className="card col-6" style={{ width: '18rem', height: '8rem' }}>
-              <img src="https://via.placeholder.com/150" className="card-img-top h-3" alt="..." style={{ height: '12rem' }} />
-              <div className="card-body">
-                <h5 className="card-title">Card title</h5>
-                <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                <a href="/" className="btn btn-primary">Go somewhere</a>
+            <div className="row justify-content-center">
+              <div className="col-6 card m-3 p-0" style={{ width: '30rem' }}>
+                <img src="https://via.placeholder.com/300x400" className="card-img-top h-3" alt="..." style={{ height: '12rem' }} />
+                <div className="card-body">
+                  <h5 className="card-title">Card title</h5>
+                  <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                  <a href="/" className="btn btn-primary">Go somewhere</a>
+                </div>
+              </div>
+              <div className="col-6 card m-3 p-0" style={{ width: '30rem' }}>
+                <img src="https://via.placeholder.com/300x400" className="card-img-top h-3" alt="..." style={{ height: '12rem' }} />
+                <div className="card-body">
+                  <h5 className="card-title">Card title</h5>
+                  <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                  <a href="/" className="btn btn-primary">Go somewhere</a>
+                </div>
+              </div>
+              <div className="col-6 card m-3 p-0" style={{ width: '30rem' }}>
+                <img src="https://via.placeholder.com/300x400" className="card-img-top h-3" alt="..." style={{ height: '12rem' }} />
+                <div className="card-body">
+                  <h5 className="card-title">Card title</h5>
+                  <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                  <a href="/" className="btn btn-primary">Go somewhere</a>
+                </div>
+              </div>
+              <div className="col-6 card m-3 p-0" style={{ width: '30rem' }}>
+                <img src="https://via.placeholder.com/300x400" className="card-img-top h-3" alt="..." style={{ height: '12rem' }} />
+                <div className="card-body">
+                  <h5 className="card-title">Card title</h5>
+                  <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                  <a href="/" className="btn btn-primary">Go somewhere</a>
+                </div>
               </div>
             </div>
+
           </div>
         </section>
       </main>
