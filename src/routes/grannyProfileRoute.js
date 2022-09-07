@@ -8,7 +8,8 @@ route.get('/', async (req, res) => {
   try {
     const album = await Album.findAll();
     console.log(album);
-    renderTemplate(GrannyProfile, { album }, res);
+    const { session } = req;
+    renderTemplate(GrannyProfile, { album, session }, res);
   } catch (err) {
     console.log(err);
   }

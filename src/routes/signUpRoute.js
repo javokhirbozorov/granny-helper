@@ -28,13 +28,15 @@ route.post('/', async (req, res) => {
     const findGranny = await Granny.findOne({ where: { email: emailInput } });
     if (!findGranny) {
       const newGranny = await Granny.create({ username: nameInput, email: emailInput, password });
+
       req.session.user = newGranny.username;
+
       req.session.save(() => {
-        res.redirect('/');
+        res.redirect('/profile');
       });
     } else {
       res.redirect('/login');
-    };
+    }
   } else {
     const findGrChild = await GrandChild.findOne({ where: { email: emailInput } });
     if (!findGrChild) {

@@ -51,10 +51,10 @@ const grandchildRouter = require('./src/routes/grandchildRouter');
 const granny = 'granny.com';
 
 // init routes
-app.use('/sign-up', signUpRoute);
 app.use('/', MainPage);
+app.use('/sign-up', signUpRoute);
 app.use(`/${granny}/main`, GrannyMainPage);
-app.use(`/${granny}/profile`, GrannyProfile);
+app.use('/profile', GrannyProfile);
 
 app.use('/login', loginRouter);
 // ручка для выхода пользователя с уничтожением куки и файла сессии
