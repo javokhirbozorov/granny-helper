@@ -2,7 +2,7 @@ const React = require('react');
 const Layout = require('./Layout');
 // https://via.placeholder.com/300x400
 function GrannyProfile({ album }) {
-  // console.log('😁😁😁', album[0].imglink, '😁😁😁');
+  console.log('😁😁😁', album[0].imglink, '😁😁😁');
   return (
     <Layout>
       <main className="w-75 m-auto">
@@ -80,11 +80,18 @@ function GrannyProfile({ album }) {
         <section className="container post-section">
           <hr />
           <hr />
-          <form action="" method="post">
-            <div className="input-group mb-3">
+          <form action="" method="POST">
+            {/* <div className="input-group mb-3">
               <input type="text" name="imgUrlInput" className="form-control" placeholder="Place the image URL here." aria-label="Image URL" aria-describedby="addImgBtn" />
               <button className="btn btn-primary" type="button" id="addImgBtn">Add Img</button>
+            </div> */}
+            <div className="mb-3 input-group ">
+              <label htmlFor="formFileMultiple" className="form-label">
+                Uplad photos here
+                <input className="form-control" type="file" id="formFileMultiple" multiple />
+              </label>
             </div>
+            <button className="btn btn-primary" type="button" id="addImgBtn">Add</button>
           </form>
 
           <div className="post-cards container">
@@ -92,8 +99,7 @@ function GrannyProfile({ album }) {
               {
             album.map((grannyPost) => (
               <div className="col-6 card m-3 p-0" key={grannyPost.id} style={{ width: '30rem' }}>
-                <a href={grannyPost.imglink}>{grannyPost.imglink}</a>
-                <img className="card-img-top h-3" alt="Granny Post" style={{ width: '30rem', height: '12rem' }} src={grannyPost.imglink.toString()} />
+                <img src={grannyPost.imglink} className="card-img-top h-3" alt="Granny Post" style={{ width: '30rem', height: '12rem' }} />
                 <div className="card-body">
                   <h5 className="card-title">Card title</h5>
                   <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
