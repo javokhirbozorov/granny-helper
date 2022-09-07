@@ -1,6 +1,6 @@
 const React = require('react');
 
-function Layout({ title, children }) {
+function Layout({ title, children, session }) {
   return (
     <html lang="en">
       <head>
@@ -25,31 +25,38 @@ function Layout({ title, children }) {
 
           <nav className="navbar navbar-expand-lg navbar-light bg-light">
 
-            <h2>Granny.com</h2>
+            <h2><a href="/">Granny.com</a></h2>
 
             <div className="collapse navbar-collapse sm-2" id="navbarNav">
               <ul className="navbar-nav">
-                <li className="nav-item">
-                  <a className="nav-link" href="/granny.com/main">
-                    Главная
-                    <span className="sr-only">(current)</span>
-                  </a>
-                </li>
-                <li className="nav-item">
-                  <a className="nav-link" href="/granny.com/profile">Профиль</a>
-                </li>
-                <li className="nav-item">
-                  <a className="nav-link" href="/granny.com">Выход</a>
-                </li>
-                <li className="nav-item">
-                  <a className="nav-link" href="#">
-                    Войти
-                    <span className="sr-only">(current)</span>
-                  </a>
-                </li>
-                <li className="nav-item">
-                  <a className="nav-link" href="#">Регистрация</a>
-                </li>
+
+                {
+                  (!session)
+                    ? (
+                      <>
+                        <li className="nav-item">
+                          <a className="nav-link" href="/">
+                            Войти
+                          </a>
+                        </li>
+                        <li className="nav-item">
+                          <a className="nav-link" href="/">Регистрация</a>
+                        </li>
+                      </>
+                    )
+                    : (
+                      <>
+                        <li className="nav-item">
+                          <a className="nav-link" href="/profile">Профиль</a>
+                        </li>
+                        <li className="nav-item">
+                          <a className="nav-link" href="/logout">Выход</a>
+                        </li>
+                      </>
+                    )
+
+                }
+
               </ul>
             </div>
 

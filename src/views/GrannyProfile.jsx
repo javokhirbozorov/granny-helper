@@ -1,10 +1,10 @@
 const React = require('react');
 const Layout = require('./Layout');
 // https://via.placeholder.com/300x400
-function GrannyProfile({ album }) {
+function GrannyProfile({ album, session }) {
   console.log('😁😁😁', album[0].imglink, '😁😁😁');
   return (
-    <Layout>
+    <Layout session={session}>
       <main className="w-75 m-auto">
         <section className="container hero d-flex justify-content-between" id="hero">
           <div className="profile-img col-3">
@@ -61,7 +61,7 @@ function GrannyProfile({ album }) {
                         <li>
                           <hr className="dropdown-divider" />
                         </li>
-                        /
+
                         <li><a className="dropdown-item" href="/">Something else here</a></li>
                       </ul>
                     </li>

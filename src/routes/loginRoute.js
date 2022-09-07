@@ -28,7 +28,7 @@ router.post('/', async (req, res) => {
       if (grandchildPassCheck) {
         req.session.user = grandchild.username;
         req.session.save(() => {
-          res.send('/');
+          res.redirect('/profile');
         });
       } else {
         res.redirect('/login');
@@ -40,7 +40,7 @@ router.post('/', async (req, res) => {
     if (grannyPassCheck) {
       req.session.user = granny.username;
       req.session.save(() => {
-        res.redirect('/');
+        res.redirect('/profile');
       });
     } else {
       res.redirect('/login');
