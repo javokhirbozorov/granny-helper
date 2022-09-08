@@ -52,24 +52,21 @@ const GrandChildProfileRoute = require('./src/routes/grandChildProfileRoute');
 
 const grandchildRouter = require('./src/routes/grandchildRouter');
 
-// App Main Address
-const granny = 'granny.com';
 
 // init routes
 app.use('/', MainPage);
-app.use(`/${granny}/main`, GrannyMainPage);
-app.use(`/${granny}/profile`, GrannyProfile);
-app.use(`/grandChildProfile`, GrandChildProfileRoute);
-
-
+app.use('/sign-up', signUpRoute);
 app.use('/login', loginRouter);
-app.use('/signin', signUpRoute);
-// ручка для выхода пользователя с уничтожением куки и файла сессии
 app.use('/logout', logoutRoute);
 
-app.use('/', grandchildRouter);
+app.use(`/grandChildProfile`, GrandChildProfileRoute);
+app.use('/profile', GrannyProfile);
+
+// app.use('/', grandchildRouter);
+// app.use('/', GrannyProfile1);
 
 
+// app listener
 app.listen(PORT, async () => {
 
   console.log(`Server starting on PORT => ${PORT}`);

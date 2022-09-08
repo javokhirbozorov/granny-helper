@@ -1,14 +1,13 @@
 const React = require('react');
 const Layout = require('./Layout');
 // https://via.placeholder.com/300x400
-function GrannyProfile({ album }) {
-  console.log('😁😁😁', album[0].imglink, '😁😁😁');
+function GrannyProfile({ album, session }) {
   return (
-    <Layout>
+    <Layout session={session}>
       <main className="w-75 m-auto">
         <section className="container hero d-flex justify-content-between" id="hero">
           <div className="profile-img col-3">
-            <img src="https://via.placeholder.com/150" className="profile-img m-auto" alt="" srcSet="" />
+            <img src="https://via.placeholder.com/150" className="profile-img m-auto" />
             <p className="username text-center">User Name</p>
           </div>
 
@@ -61,7 +60,7 @@ function GrannyProfile({ album }) {
                         <li>
                           <hr className="dropdown-divider" />
                         </li>
-                        /
+
                         <li><a className="dropdown-item" href="/">Something else here</a></li>
                       </ul>
                     </li>
@@ -81,10 +80,6 @@ function GrannyProfile({ album }) {
           <hr />
           <hr />
           <form action="" method="POST">
-            {/* <div className="input-group mb-3">
-              <input type="text" name="imgUrlInput" className="form-control" placeholder="Place the image URL here." aria-label="Image URL" aria-describedby="addImgBtn" />
-              <button className="btn btn-primary" type="button" id="addImgBtn">Add Img</button>
-            </div> */}
             <div className="mb-3 input-group ">
               <label htmlFor="formFileMultiple" className="form-label">
                 Uplad photos here
@@ -96,17 +91,21 @@ function GrannyProfile({ album }) {
 
           <div className="post-cards container">
             <div className="row justify-content-center">
+              <div className="row">
+              </div>
+              <select id="voiceList"/>
               {
             album.map((grannyPost) => (
-              <div className="col-6 card m-3 p-0" key={grannyPost.id} style={{ width: '30rem' }}>
-                <img src={grannyPost.imglink} className="card-img-top h-3" alt="Granny Post" style={{ width: '30rem', height: '12rem' }} />
-                <div className="card-body">
-                  <h5 className="card-title">Card title</h5>
-                  <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                  <a href="/" className="btn btn-success btn-lg">Play</a>
+              <div key={grannyPost.id} className="allcarddiv">
+                <div className="col-6 card m-3 p-0" key={grannyPost.id} style={{ width: '30rem' }}>
+                  <img src={grannyPost.imglink} className="card-img-top h-3" alt="Granny Post" style={{ width: '30rem', height: '12rem' }} />
+                  <div className="card-body">
+                    <h5 className="card-title">Text</h5>
+                    <p className="card-text">{grannyPost.imgText}</p>
+                    <button className="btn btn-success btn-lg play" type="submit" key={grannyPost.id}>Play</button>
+                  </div>
                 </div>
               </div>
-
             ))
             }
             </div>
