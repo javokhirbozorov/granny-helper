@@ -25,7 +25,7 @@ router.post('/GrannyTest', async (req, res) => {
   await worker.initialize('rus');
   const { data: { text } } = await worker.recognize(image);
   console.log(text);
-  const newPhoto = await Album.create({ imglink: image, text, grannyId: user.id });
+  const newPhoto = await Album.create({ imglink: image, imgText: text, grannyId: user.id });
   await worker.terminate();
   res.redirect('/GrannyTest');
 });
