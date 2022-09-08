@@ -1,10 +1,10 @@
 const React = require('react');
 const Layout = require('./Layout');
 
-function GrannyProfile1({ img }) {
+function GrannyProfile1() {
   return (
     <Layout>
-      <form id="formimg">
+      <form id="formimg" action="/GrannyTest" method="POST">
         {/* <!-- селект для выбора языка --> */}
         <select id="langs">
           <option value="rus">Русский</option>

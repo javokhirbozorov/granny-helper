@@ -17,6 +17,7 @@ const PORT = process.env.PORT || 3000;
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, './public')));
 app.use(express.json());
+// app.set('view engine', 'ejs');
 
 // создание конфига для куки
 const sessionConfig = {
@@ -46,6 +47,7 @@ const GrannyProfile1 = require('./src/routes/grannyProfileRouter1');
 // const { sequelize } = require('./db/models');
 
 const grandchildRouter = require('./src/routes/grandchildRouter');
+const renderTemplate = require('./src/lib/renderTemplate');
 
 // App Main Address
 const granny = 'granny.com';
@@ -65,7 +67,6 @@ app.use('/grandchild', grandchildRouter);
 app.use('/', GrannyProfile1);
 
 // app listener
-
 app.listen(PORT, async () => {
   console.log(`Server starting on PORT => ${PORT}`);
   try {
