@@ -10,6 +10,9 @@ module.exports = {
       imglink: {
         type: Sequelize.STRING,
       },
+      imgText: {
+        type: Sequelize.STRING,
+      },
       grannyId: {
         type: Sequelize.INTEGER,
         references: {

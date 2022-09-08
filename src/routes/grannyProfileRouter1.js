@@ -1,6 +1,6 @@
 const { createWorker } = require('tesseract.js');
 const router = require('express').Router();
-const { Album } = require('../../db/models');
+const { Album, Granny } = require('../../db/models');
 const renderTemplate = require('../lib/renderTemplate');
 const GrannyProfile1 = require('../views/GrannyProfile1');
 
@@ -18,14 +18,16 @@ const worker = createWorker({
 });
 
 router.post('/GrannyTest', async (req, res) => {
+  const user = await Granny.findOne({ where: { username: req.session.user } });
   const image = req.body.imglink;
   await worker.load();
   await worker.loadLanguage('rus');
   await worker.initialize('rus');
   const { data: { text } } = await worker.recognize(image);
   console.log(text);
+  const newPhoto = await Album.create({ imglink: image, text, grannyId: user.id });
   await worker.terminate();
-  res.redirect('/');
+  res.redirect('/GrannyTest');
 });
 
 module.exports = router;
