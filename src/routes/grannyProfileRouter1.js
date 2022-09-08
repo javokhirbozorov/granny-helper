@@ -23,6 +23,9 @@ router.post('/GrannyTest', async (req, res) => {
   await worker.load();
   await worker.loadLanguage('rus');
   await worker.initialize('rus');
+  await worker.setParameters({
+    tessedit_char_whitelist: '0123456789йцукенгшщзхъёэждлорпавыфячсмитьбюЙЦУКЕНГШЩЗХЪЁЭЖДЛОРПАВЫФЯЧСМИТЬБЮ?!.,',
+  });
   const { data: { text } } = await worker.recognize(image);
   console.log(text);
   const newPhoto = await Album.create({ imglink: image, imgText: text, grannyId: user.id });
