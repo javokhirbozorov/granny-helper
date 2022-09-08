@@ -12,10 +12,10 @@ function Layout({ title, children, session }) {
         {/* <!-- JavaScript Bundle with Popper --> */}
         <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossOrigin="anonymous" />
 
-        <link rel="stylesheet" href="/stylesheets/normalize.css" />
-        <link rel="stylesheet" href="/stylesheets/application.css" />
+        {/* <link rel="stylesheet" href="/stylesheets/normalize.css" />
+        <link rel="stylesheet" href="/stylesheets/application.css" /> */}
 
-        <script defer src="/js/application.js" />
+        <script defer src="/js/client.js" />
         <link rel="stylesheet" href="/css/styles.css" />
         <title>{title}</title>
       </head>
