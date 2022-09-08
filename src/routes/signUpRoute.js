@@ -41,7 +41,7 @@ route.post('/', async (req, res) => {
       const newGrChild = await GrandChild.create({ username: nameInput, email: emailInput, password });
       req.session.user = newGrChild.username;
       req.session.save(() => {
-        res.redirect('/');
+        res.redirect('/GrandChildProfile');
       });
     } else {
       res.redirect('/login');
