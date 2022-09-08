@@ -88,7 +88,7 @@ function GrannyProfile({ album, session }) {
             <div className="mb-3 input-group ">
               <label htmlFor="formFileMultiple" className="form-label">
                 Uplad photos here
-                <input className="form-control" type="file" id="formFileMultiple" multiple />
+                <input className="form-control" type="file" id="formFileMultiple" />
               </label>
             </div>
             <button className="btn btn-primary" type="button" id="addImgBtn">Add</button>
