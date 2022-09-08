@@ -25,39 +25,51 @@ function Layout({ title, children, session }) {
 
           <nav className="navbar navbar-expand-lg navbar-light bg-light">
 
-            <h2><a href="/">Granny.com</a></h2>
+            <nav className="navbar bg-light">
+              <div className="container-fluid">
+                <a className="navbar-brand" href="/">
+                  <img src="https://cdn.freelance.ru/img/portfolio/pics/00/29/E3/2745317.jpg?mt=c291372b" alt="Logo" width="30" height="24" className="d-inline-block align-text-top" />
+                  Granny.com
+                </a>
+              </div>
+            </nav>
 
             <div className="collapse navbar-collapse sm-2" id="navbarNav">
-              <ul className="navbar-nav">
 
-                {
+              {
                   (!session)
                     ? (
-                      <>
+                      <ul className="navbar-nav">
                         <li className="nav-item">
-                          <a className="nav-link" href="/">
-                            Войти
-                          </a>
+                          <a className="nav-link" href="/login">Войти</a>
                         </li>
                         <li className="nav-item">
-                          <a className="nav-link" href="/">Регистрация</a>
+                          <a className="nav-link" href="/sign-up">Регистрация</a>
                         </li>
-                      </>
+                      </ul>
                     )
                     : (
-                      <>
-                        <li className="nav-item">
-                          <a className="nav-link" href="/profile">Профиль</a>
-                        </li>
-                        <li className="nav-item">
-                          <a className="nav-link" href="/logout">Выход</a>
-                        </li>
-                      </>
+                      <nav className="navbar bg-light">
+                        <div className="container-fluid d-flex mb-3">
+                          <ul className="navbar-nav  ">
+                            <li className="nav-item p-2">
+                              <a className="nav-link" href="/profile">Профиль</a>
+                            </li>
+                            <li className="nav-item p-2">
+                              <a className="nav-link" href="/logout">Выход</a>
+                            </li>
+                          </ul>
+                          {/* <span className="nav-text">
+                            Привет,
+                            {' '}
+                            {session.user}
+                          </span> */}
+                        </div>
+                      </nav>
                     )
 
                 }
 
-              </ul>
             </div>
 
           </nav>
