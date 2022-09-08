@@ -1,8 +1,5 @@
 require('@babel/register');
 require('dotenv').config();
-// const Tesseract = require('tesseract.js');
-// const multer = require('multer');
-// const fs = require('fs');
 
 const session = require('express-session');
 const FileStore = require('session-file-store')(session);
@@ -69,38 +66,7 @@ app.use('/grandchild', grandchildRouter);
 
 app.use('/', GrannyProfile1);
 
-// const Storage = multer.diskStorage({
-//   destination: (req, file, callback) => {
-//     callback(null, '/images');
-//   },
-//   filename: (req, file, callback) => {
-//     callback(null, file.originalname);
-//   },
-// });
-
-// const upload = multer({
-//   storage: Storage,
-// }).array('image', 3);
-
-
-// app.post('/upload', (req, res) => {
-//   upload(req, res, (err) => {
-//     if (err) {
-//       return res.send('WRONG');
-//     }
-//     const image = fs.readFileSync(__dirname + '/images/'+ req.file.originalname, { encoding: null });
-//     Tesseract.recognize(image)
-//       .progress((p) => {
-//         console.log('progress', p);
-//       })
-//       .then((result) => {
-//         res.json(result.html);
-//       });
-//   });
-// });
-
 // app listener
-
 app.listen(PORT, async () => {
   console.log(`Server starting on PORT => ${PORT}`);
   try {
