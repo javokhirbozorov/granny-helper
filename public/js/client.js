@@ -1,5 +1,4 @@
-console.log('CLIENT')
-
+console.log('CLIENT');
 
 // const formimg = document.getElementById('formimg');
 
@@ -35,12 +34,12 @@ console.log('CLIENT')
 //   }
 // })
 
-const body = document.body;
+const { body } = document;
 
-const addImgform = document.forms['addImgForm'];
+const addImgform = document.getElementById('addImgForm');
+console.log(body);
 const addImgFormInput = addImgform.elements[0];
 const postsList = document.querySelector('.postsList');
-
 
 addImgform.addEventListener('submit', async (e) => {
   e.preventDefault();
@@ -51,40 +50,35 @@ addImgform.addEventListener('submit', async (e) => {
 
   const URL_IS_VALID = regExp.test(imgUrl);
 
-
   if (URL_IS_VALID) {
     const res = await fetch('/grandChildProfile', {
       method: 'POST',
       headers: {
-        'Content-type': 'application/json'
+        'Content-type': 'application/json',
       },
-      body: JSON.stringify({ imgUrlInput: imgUrl })
+      body: JSON.stringify({ imgUrlInput: imgUrl }),
     });
 
-
     if (res.ok) {
-      const data = await res.json()
+      const data = await res.json();
       const imgCard = cardTemplate(data);
 
       postsList.insertAdjacentHTML('afterbegin', imgCard);
     } else {
-      console.log(res)
+      console.log(res);
     }
-
   } else {
     addImgFormInput.style.border = '1px solid red';
     addImgFormInput.style.color = 'red';
-    addImgFormInput.value = 'Invalid url'
+    addImgFormInput.value = 'Invalid url';
 
     setTimeout(() => {
       addImgFormInput.style.border = '';
       addImgFormInput.style.color = '';
-      addImgFormInput.value = ''
-    }, 1000)
+      addImgFormInput.value = '';
+    }, 1000);
   }
-
 });
-
 
 function cardTemplate(data) {
   return `
@@ -96,17 +90,13 @@ function cardTemplate(data) {
       <a href="/" class="btn btn-success btn-lg">Play</a>
     </div>
   </div>
-  `
+  `;
 }
-
-
 
 const addGrannyBtn = document.querySelector('.addGrannyBtn');
 const grannyDeleteBtn = document.querySelectorAll('.grannyDeleteBtn');
 
-
 addGrannyBtn.addEventListener('click', (e) => {
-
   const background = document.createElement('div');
   background.classList.add('background');
 
@@ -121,67 +111,60 @@ addGrannyBtn.addEventListener('click', (e) => {
   const grannySearchInputBtn = document.querySelector('.grannySearchInputBtn');
   const grannySearchInput = document.querySelector('.grannySearchInput');
 
-  body.prepend(background)
+  body.prepend(background);
   grannyWindow.style.display = 'block';
-  
 
   grannySearchInputBtn.addEventListener('click', async (e) => {
     const inputValue = grannySearchInput.value;
-
 
     if (inputValue.length > 1) {
       const res = await fetch('/grandChildProfile/addGranny', {
         method: 'POST',
         headers: {
-          'Content-type': 'application/json'
+          'Content-type': 'application/json',
         },
-        body: JSON.stringify({ email: inputValue })
+        body: JSON.stringify({ email: inputValue }),
       });
-  
 
       if (res.ok) {
         const data = await res.json();
-  
+        console.log(data);
+
         const granny = `
         <div class="alert alert-secondary usersListItem" role="alert">
-          ${data[0].email}
+          ${data.email}
           <button type="button" class="btn btn-danger sm-0 grannyDeleteBtn">Удалить</button>
         </div>
-        `
+        `;
         grannyUserList.insertAdjacentHTML('afterbegin', granny);
         grannniesCounter.textContent = +grannniesCounter.textContent + 1;
       } else {
         console.log(res);
       }
     }
+  });
 
-  })
-  
-
-  grannyDeleteBtn.forEach(el => {
+  grannyDeleteBtn.forEach((el) => {
     el.addEventListener('click', async (e) => {
-
+      console.log(e);
       const res = await fetch('/grandChildProfile/deleteGranny', {
         method: 'DELETE',
         headers: {
-          'Content-type': 'application/json'
+          'Content-type': 'application/json',
         },
-        body: JSON.stringify({ id: e.target.dataset.id })
-      })
+        body: JSON.stringify({ id: e.target.dataset.id }),
+      });
 
-      usersListItem.remove()
+      usersListItem.remove();
       grannniesCounter.textContent = +grannniesCounter.textContent - 1;
-    })
-  })
-
+    });
+  });
 
   closeGrannyWindow.addEventListener('click', () => {
     grannyWindow.style.display = 'none';
     background.remove();
-  })
-
-})
-
+  });
+});
 
 function addGrannyWindowTemplate() {
   return `
@@ -201,6 +184,5 @@ function addGrannyWindowTemplate() {
       </div>
     </div>
   </div>
-  `
+  `;
 }
-

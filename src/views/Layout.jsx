@@ -14,7 +14,7 @@ function Layout({ title, children, session }) {
 
         {/* <link rel="stylesheet" href="/stylesheets/normalize.css" />
         <link rel="stylesheet" href="/stylesheets/application.css" /> */}
-
+        <script defer src="/js/application.js" />
         <script defer src="/js/client.js" />
         <link rel="stylesheet" href="/css/styles.css" />
         <title>{title}</title>
@@ -59,11 +59,11 @@ function Layout({ title, children, session }) {
                               <a className="nav-link" href="/logout">Выход</a>
                             </li>
                           </ul>
-                          {/* <span className="nav-text">
+                          <span className="nav-text">
                             Привет,
                             {' '}
                             {session.user}
-                          </span> */}
+                          </span>
                         </div>
                       </nav>
                     )

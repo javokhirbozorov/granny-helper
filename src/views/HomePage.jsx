@@ -1,7 +1,7 @@
 const React = require('react');
 const Layout = require('./Layout');
 
-function MainPage(props) {
+function MainPage({props}) {
   return (
     <Layout title="Home">
       <h1 className="m-auto">What is this platform for?</h1>
