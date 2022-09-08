@@ -2,7 +2,6 @@ const React = require('react');
 const Layout = require('./Layout');
 // https://via.placeholder.com/300x400
 function GrannyProfile({ album, session }) {
-  console.log('😁😁😁', album[0].imglink, '😁😁😁');
   return (
     <Layout session={session}>
       <main className="w-75 m-auto">
