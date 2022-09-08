@@ -1,14 +1,8 @@
-import { createRequire } from 'module';
-import { useState } from 'react';
-import axios from 'axios';
-
-const require = createRequire(import.meta.url);
-
 const React = require('react');
 const Layout = require('./Layout');
 // https://via.placeholder.com/300x400
 function GrannyProfile({ album, session }) {
-  console.log('😁😁😁', album[0].imglink, '😁😁😁');
+  // console.log('😁😁😁', album[0].imglink, '😁😁😁');
   return (
     <Layout session={session}>
       <main className="w-75 m-auto">
@@ -86,7 +80,7 @@ function GrannyProfile({ album, session }) {
         <section className="container post-section">
           <hr />
           <hr />
-          <form onSubmit={submit} action="" method="POST">
+          <form action="" method="POST">
             {/* <div className="input-group mb-3">
               <input type="text" name="imgUrlInput" className="form-control" placeholder="Place the image URL here." aria-label="Image URL" aria-describedby="addImgBtn" />
               <button className="btn btn-primary" type="button" id="addImgBtn">Add Img</button>
