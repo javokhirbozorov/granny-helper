@@ -79,18 +79,26 @@ function GrannyProfile({ album, session }) {
         <section className="container post-section">
           <hr />
           <hr />
-          <form action="" method="POST">
-            {/* <div className="input-group mb-3">
-              <input type="text" name="imgUrlInput" className="form-control" placeholder="Place the image URL here." aria-label="Image URL" aria-describedby="addImgBtn" />
+          {/* <form action="/profile/upload" encType="multipart/form-data" method="POST"> */}
+          {/* <div className="input-group mb-3">
+              <input type="teßxt" name="imgUrlInput" className="form-control" placeholder="Place the image URL here." aria-label="Image URL" aria-describedby="addImgBtn" />
               <button className="btn btn-primary" type="button" id="addImgBtn">Add Img</button>
             </div> */}
-            <div className="mb-3 input-group ">
+          {/* <div className="mb-3 input-group ">
               <label htmlFor="formFileMultiple" className="form-label">
                 Uplad photos here
-                <input className="form-control" type="file" id="formFileMultiple" multiple />
+                <input className="form-control" type="file" id="formFileMultiple" />
               </label>
             </div>
-            <button className="btn btn-primary" type="button" id="addImgBtn">Add</button>
+            <button className="btn btn-primary" type="submit" id="addImgBtn">Add</button>
+          </form> */}
+
+          <form action="/profile/upload" encType="multipart/form-data" method="post">
+            <div className="form-group">
+              <input type="file" className="form-control-file" name="uploaded_file" />
+              <input type="text" className="form-control" placeholder="Number of speakers" name="nspeakers" />
+              <input type="submit" value="Get me the stats!" className="btn btn-default" />
+            </div>
           </form>
 
           <div className="post-cards container">
