@@ -1,5 +1,7 @@
 const route = require('express').Router();
+const multer = require('multer');
 
+const upload = multer({ dest: 'uploads/' });
 const renderTemplate = require('../lib/renderTemplate');
 const GrannyProfile = require('../views/GrannyProfile');
 const { Granny, Album } = require('../../db/models');
