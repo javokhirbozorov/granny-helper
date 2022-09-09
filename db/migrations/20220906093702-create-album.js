@@ -8,10 +8,10 @@ module.exports = {
         type: Sequelize.INTEGER,
       },
       imglink: {
-        type: Sequelize.STRING,
+        type: Sequelize.TEXT,
       },
       imgText: {
-        type: Sequelize.STRING,
+        type: Sequelize.TEXT,
       },
       grannyId: {
         type: Sequelize.INTEGER,

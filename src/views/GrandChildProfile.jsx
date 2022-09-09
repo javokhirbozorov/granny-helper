@@ -100,13 +100,18 @@ function GrandChildProfile({ grannyAlbum, myGranny, session }) {
         <section className="container post-section">
           <hr />
           <hr />
-          <form id="addImgForm" action="/grandChildProfile" method="POST">
+          {/* <form id="addImgForm" action="/grandChildProfile" method="POST">
             <div className="input-group mb-3">
               <input name="imgUrlInput" type="text" className="form-control imgUrlInput" placeholder="img url" />
               <div className="input-group-append">
                 <button className="btn btn-outline-secondary addImgBtn" type="submit">Add img</button>
               </div>
             </div>
+          </form> */}
+
+          <form action="/upload" method="post" encType="multipart/form-data">
+            <input type="file" name="image" id="imageUpload" />
+            <button type="submit">Add image</button>
           </form>
 
           <div className="post-cards container">

@@ -79,7 +79,7 @@ function GrannyProfile({ album, session }) {
         <section className="container post-section">
           <hr />
           <hr />
-          <form action="/profile" method="POST" id="forming">
+          {/* <form action="/profile" method="POST" id="forming">
             <div className="mb-3 input-group ">
               <label htmlFor="formFileMultiple" className="form-label">
                 Uplad photos here
@@ -87,6 +87,11 @@ function GrannyProfile({ album, session }) {
               </label>
             </div>
             <button className="btn btn-primary" type="submit" id="start">Add</button>
+          </form> */}
+
+          <form action="/profile/upload" method="post" encType="multipart/form-data">
+            <input type="file" name="images" />
+            <button type="submit">Add</button>
           </form>
 
           <div className="post-cards container">

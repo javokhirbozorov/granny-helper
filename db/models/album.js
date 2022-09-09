@@ -15,8 +15,8 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   Album.init({
-    imglink: DataTypes.STRING,
-    imgText: DataTypes.STRING,
+    imglink: DataTypes.TEXT,
+    imgText: DataTypes.TEXT,
     grannyId: DataTypes.INTEGER,
   }, {
     sequelize,

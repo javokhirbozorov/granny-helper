@@ -20,10 +20,12 @@
   },
   "homepage": "https://github.com/javokhirbozorov/granny-helper#readme",
   "dependencies": {
+    "@aws-sdk/client-s3": "^3.165.0",
     "@babel/core": "^7.19.0",
     "@babel/preset-env": "^7.19.0",
     "@babel/preset-react": "^7.18.6",
     "@babel/register": "^7.18.9",
+    "aws-sdk": "^2.1212.0",
     "bcrypt": "^5.0.1",
     "dotenv": "^16.0.2",
     "ejs": "^3.1.8",
@@ -38,7 +40,8 @@
     "sequelize": "^6.21.4",
     "sequelize-cli": "^6.4.1",
     "session-file-store": "^1.5.0",
-    "tesseract.js": "^3.0.2"
+    "tesseract.js": "^3.0.2",
+    "uuid": "^9.0.0"
   },
   "devDependencies": {
     "epxress": "^0.0.1-security",
