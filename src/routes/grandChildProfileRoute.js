@@ -27,58 +27,58 @@ route.get('/', async (req, res) => {
 });
 
 
-// POST
-route.post('/', async (req, res) => {
-  const { imgUrlInput } = req.body;
+// // POST
+// route.post('/', async (req, res) => {
+//   const { imgUrlInput } = req.body;
   
-  console.log(imgUrlInput)
+//   console.log(imgUrlInput)
 
-  try {
-    const album = await Album.create({ imglink: imgUrlInput, grannyId: 1 });
-    console.log(album);
+//   try {
+//     const album = await Album.create({ imglink: imgUrlInput, grannyId: 1 });
+//     console.log(album);
 
-    res.json(album)
-  } catch (err) {
-    console.log(err);
-  }
-});
+//     res.json(album)
+//   } catch (err) {
+//     console.log(err);
+//   }
+// });
 
 
-// POST
-route.post('/addGranny', async (req, res) => {
-  const { email } = req.body;
+// // POST
+// route.post('/addGranny', async (req, res) => {
+//   const { email } = req.body;
 
-  try {
-    const album = await Granny.findAll({ where: { email }});
+//   try {
+//     const album = await Granny.findAll({ where: { email }});
 
-    if (album) {
-      const addGranny = await Family.create({ grannyId: 1, grandChildId: 1 })
+//     if (album) {
+//       const addGranny = await Family.create({ grannyId: 1, grandChildId: 1 })
       
-      res.json(album)
-    } else {
-      res.status(400)
-    }
-  } catch (err) {
-    console.log(err);
-  }
-});
+//       res.json(album)
+//     } else {
+//       res.status(400)
+//     }
+//   } catch (err) {
+//     console.log(err);
+//   }
+// });
 
 
-// DELETE
-route.delete('/deleteGranny', async (req, res) => {
-  const { id } = req.body;
+// // DELETE
+// route.delete('/deleteGranny', async (req, res) => {
+//   const { id } = req.body;
 
-  console.log(id)
+//   console.log(id)
 
-  try {
-    const album = await Family.destroy({ where: { grannyId: id } });
+//   try {
+//     const album = await Family.destroy({ where: { grannyId: id } });
 
-    console.log(album)
-    res.json(album)
-  } catch (err) {
-    console.log(err);
-  }
-});
+//     console.log(album)
+//     res.json(album)
+//   } catch (err) {
+//     console.log(err);
+//   }
+// });
 
 
 module.exports = route;

@@ -60,7 +60,7 @@ app.use('/login', loginRouter);
 app.use('/logout', logoutRoute);
 
 app.use(`/grandChildProfile`, GrandChildProfileRoute);
-app.use('/profile', GrannyProfile);
+// app.use('/profile', GrannyProfile);
 
 // app.use('/', grandchildRouter);
 // app.use('/', GrannyProfile1);

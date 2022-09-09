@@ -37,12 +37,12 @@ console.log('CLIENT')
 
 const body = document.body;
 
-const addImgform = document.forms['addImgForm'];
-const addImgFormInput = addImgform.elements[0];
-const postsList = document.querySelector('.postsList');
+const addImgform = document?.forms['addImgForm'];
+const addImgFormInput = addImgform?.elements[0];
+const postsList = document?.querySelector('.postsList');
 
 
-addImgform.addEventListener('submit', async (e) => {
+addImgform?.addEventListener('submit', async (e) => {
   e.preventDefault();
 
   const imgUrl = addImgFormInput.value;
@@ -101,11 +101,11 @@ function cardTemplate(data) {
 
 
 
-const addGrannyBtn = document.querySelector('.addGrannyBtn');
-const grannyDeleteBtn = document.querySelectorAll('.grannyDeleteBtn');
+const addGrannyBtn = document?.querySelector('.addGrannyBtn');
+const grannyDeleteBtn = document?.querySelectorAll('.grannyDeleteBtn');
 
 
-addGrannyBtn.addEventListener('click', (e) => {
+addGrannyBtn?.addEventListener('click', (e) => {
 
   const background = document.createElement('div');
   background.classList.add('background');
@@ -158,7 +158,7 @@ addGrannyBtn.addEventListener('click', (e) => {
   })
   
 
-  grannyDeleteBtn.forEach(el => {
+  grannyDeleteBtn?.forEach(el => {
     el.addEventListener('click', async (e) => {
 
       const res = await fetch('/grandChildProfile/deleteGranny', {
@@ -175,32 +175,9 @@ addGrannyBtn.addEventListener('click', (e) => {
   })
 
 
-  closeGrannyWindow.addEventListener('click', () => {
+  closeGrannyWindow?.addEventListener('click', () => {
     grannyWindow.style.display = 'none';
     background.remove();
   })
 
 })
-
-
-function addGrannyWindowTemplate() {
-  return `
-  <div class="addGrannyWindow">
-    <div class='closeGrannyWindow'></div>
-    <div class="input-group">
-      <input type="text" class="form-control grannySearchInput" placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="basic-addon2">
-      <div class="input-group-append">
-        <button class="btn btn-outline-secondary grannySearchInputBtn" type="button">Добавить</button>
-      </div>
-    </div>
- 
-    <div class="usersList">
-      <div class="alert alert-secondary usersListItem" role="alert">
-        Марья Петровна
-        <button type="button" class="btn btn-danger sm-0">Удалить</button>
-      </div>
-    </div>
-  </div>
-  `
-}
-

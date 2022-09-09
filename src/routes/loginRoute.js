@@ -18,13 +18,17 @@ router.get('/', async (req, res) => {
 router.post('/', async (req, res) => {
   const { email, password } = req.body;
   console.log(req.body);
+
   const granny = await Granny.findOne({ where: { email } });
+
   if (!granny) {
     const grandchild = await GrandChild.findOne({ where: { email } });
+
     if (!grandchild) {
       res.send('WRONG EMAIL');
     } else {
       const grandchildPassCheck = await bcrypt.compare(password, grandchild.password);
+
       if (grandchildPassCheck) {
         req.session.user = grandchild.username;
         req.session.save(() => {
@@ -37,6 +41,7 @@ router.post('/', async (req, res) => {
   } else {
     const grannyPassCheck = await bcrypt.compare(password, granny.password);
     console.log(grannyPassCheck);
+    
     if (grannyPassCheck) {
       req.session.user = granny.username;
       req.session.save(() => {

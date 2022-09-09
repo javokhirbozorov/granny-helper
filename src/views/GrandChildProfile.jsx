@@ -16,14 +16,14 @@ function GrandChildProfile({ grannyAlbum, myGranny }) {
         </div>
     
         <div className="usersList">
-          {
+          {/* {
             myGranny.map(el => (
               <div className="alert alert-secondary usersListItem" role="alert">
                 <span name='grannyMail'>{el.email}</span>
                 <button type="button" className="btn btn-danger sm-0 grannyDeleteBtn" data-id={el.id}>Удалить</button>
               </div>
             ))
-          }
+          } */}
         </div>
       </div>
 
@@ -112,7 +112,7 @@ function GrandChildProfile({ grannyAlbum, myGranny }) {
 
           <div className="post-cards container">
             <div className="row justify-content-center postsList">
-              {
+              {/* {
               grannyAlbum.map((grannyPost) => (
                 <div className="col-6 card m-3 p-0" key={grannyPost.id} style={{ width: '30rem' }}>
                   <img src={grannyPost.imglink} className="card-img-top h-3" alt="Granny Post" style={{ width: '30rem', height: '12rem' }} />
@@ -123,7 +123,7 @@ function GrandChildProfile({ grannyAlbum, myGranny }) {
                   </div>
                 </div>
               ))
-            }
+            } */}
             </div>
           </div>
         </section>
