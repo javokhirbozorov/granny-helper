@@ -1,25 +1,28 @@
 const React = require('react');
 const Layout = require('./Layout');
 
-
-function GrandChildProfile({ grannyAlbum, myGranny }) {
+function GrandChildProfile({ grannyAlbum, myGranny, session }) {
   // console.log(myGranny)
   return (
-    <Layout>
+    <Layout session={session}>
       <div className="addGrannyWindow">
-        <div className='closeGrannyWindow'></div>
+        <div className="closeGrannyWindow" />
         <div className="input-group">
-          <input name='grannySearchInput' type="text" className="form-control grannySearchInput" placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="basic-addon2"/>
+          <input name="grannySearchInput" type="text" className="form-control grannySearchInput" placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="basic-addon2" />
           <div className="input-group-append">
             <button className="btn btn-outline-secondary grannySearchInputBtn" type="button">Добавить</button>
           </div>
         </div>
-    
+
         <div className="usersList">
           {/* {
             myGranny.map(el => (
               <div className="alert alert-secondary usersListItem" role="alert">
                 <span name='grannyMail'>{el.email}</span>
+          {
+            myGranny.map((el) => (
+              <div className="alert alert-secondary usersListItem" role="alert" key={el.id}>
+                <span name="grannyMail">{el.email}</span>
                 <button type="button" className="btn btn-danger sm-0 grannyDeleteBtn" data-id={el.id}>Удалить</button>
               </div>
             ))
@@ -37,7 +40,7 @@ function GrandChildProfile({ grannyAlbum, myGranny }) {
           <div className="stats d-inline-flex justify-content-between">
             <div className="col-3 grandchild-count d-flex flex-column align-items-center m-5">
               {' '}
-              <div className="grannyWrap" style={{display: 'flex', alignItems: 'center', height: 40 + 'px', }}>
+              <div className="grannyWrap" style={{ display: 'flex', alignItems: 'center', height: `${40}px` }}>
                 <p>Grannies</p>
                 <button className="addGrannyBtn btn btn-secondary">+</button>
               </div>
@@ -101,9 +104,9 @@ function GrandChildProfile({ grannyAlbum, myGranny }) {
         <section className="container post-section">
           <hr />
           <hr />
-          <form id='addImgForm' action="/grandChildProfile" method="POST">
-           <div className="input-group mb-3">
-              <input name='imgUrlInput' type="text" className="form-control imgUrlInput" placeholder="img url"/>
+          <form id="addImgForm" action="/grandChildProfile" method="POST">
+            <div className="input-group mb-3">
+              <input name="imgUrlInput" type="text" className="form-control imgUrlInput" placeholder="img url" />
               <div className="input-group-append">
                 <button className="btn btn-outline-secondary addImgBtn" type="submit">Add img</button>
               </div>
@@ -112,18 +115,13 @@ function GrandChildProfile({ grannyAlbum, myGranny }) {
 
           <div className="post-cards container">
             <div className="row justify-content-center postsList">
-              {/* {
+              {
               grannyAlbum.map((grannyPost) => (
                 <div className="col-6 card m-3 p-0" key={grannyPost.id} style={{ width: '30rem' }}>
                   <img src={grannyPost.imglink} className="card-img-top h-3" alt="Granny Post" style={{ width: '30rem', height: '12rem' }} />
-                  <div className="card-body">
-                    <h5 className="card-title">Card title</h5>
-                    <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                    <a href="/" className="btn btn-success btn-lg">Play</a>
-                  </div>
                 </div>
               ))
-            } */}
+              }
             </div>
           </div>
         </section>

@@ -32,7 +32,7 @@ router.post('/', async (req, res) => {
       if (grandchildPassCheck) {
         req.session.user = grandchild.username;
         req.session.save(() => {
-          res.redirect('/profile');
+          res.redirect('/grandChildProfile');
         });
       } else {
         res.redirect('/login');

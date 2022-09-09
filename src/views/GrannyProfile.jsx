@@ -79,21 +79,19 @@ function GrannyProfile({ album, session }) {
         <section className="container post-section">
           <hr />
           <hr />
-          <form action="" method="POST">
+          <form action="/profile" method="POST" id="forming">
             <div className="mb-3 input-group ">
               <label htmlFor="formFileMultiple" className="form-label">
                 Uplad photos here
-                <input className="form-control" type="file" id="formFileMultiple" multiple />
+                <input className="form-control" type="input" id="file" name="imglink" multiple />
               </label>
             </div>
-            <button className="btn btn-primary" type="button" id="addImgBtn">Add</button>
+            <button className="btn btn-primary" type="submit" id="start">Add</button>
           </form>
 
           <div className="post-cards container">
             <div className="row justify-content-center">
-              <div className="row">
-              </div>
-              <select id="voiceList"/>
+              <select id="voiceList" />
               {
             album.map((grannyPost) => (
               <div key={grannyPost.id} className="allcarddiv">

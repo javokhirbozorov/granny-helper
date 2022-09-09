@@ -42,7 +42,8 @@ app.use(session(sessionConfig));
 // import routes
 const loginRouter = require('./src/routes/loginRoute');
 const signUpRoute = require('./src/routes/signUpRoute');
-const logoutRoute = require('./src/routes/logoutRoute')
+const logoutRoute = require('./src/routes/logoutRoute');
+const GrannyTest = require('./src/routes/grannyProfileRouter1');
 
 const MainPage = require('./src/routes/mainPageRoute');
 const GrannyMainPage = require('./src/routes/homeGrannyRoute');
@@ -58,6 +59,7 @@ app.use('/', MainPage);
 app.use('/sign-up', signUpRoute);
 app.use('/login', loginRouter);
 app.use('/logout', logoutRoute);
+app.use('/', GrannyTest);
 
 app.use(`/grandChildProfile`, GrandChildProfileRoute);
 // app.use('/profile', GrannyProfile);
