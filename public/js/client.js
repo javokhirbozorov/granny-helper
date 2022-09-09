@@ -110,6 +110,8 @@ addGrannyBtn.addEventListener('click', (e) => {
 
   const grannySearchInputBtn = document.querySelector('.grannySearchInputBtn');
   const grannySearchInput = document.querySelector('.grannySearchInput');
+  const cardInGrchildAlbum = document.querySelectorAll('.card-in-grchild-album');
+
 
   body.prepend(background);
   grannyWindow.style.display = 'block';
@@ -138,12 +140,15 @@ addGrannyBtn.addEventListener('click', (e) => {
         `;
         grannyUserList.insertAdjacentHTML('afterbegin', granny);
         grannniesCounter.textContent = +grannniesCounter.textContent + 1;
-      } else {
-        console.log(res);
+        // const newCard = document.createElement('div');
+        // newCard.classList.add(`col-6 card m-3 p-0 card-in-grchild-album ${data.grannyId}`);
+      } else if (res.status === 401) {
+        grannySearchInput.value = 'Already in your family';
+        grannySearchInput.className = 'form-control is-invalid';
       }
     }
   });
-
+  
   grannyDeleteBtn.forEach((el) => {
     el.addEventListener('click', async (e) => {
       console.log(e);
@@ -154,9 +159,13 @@ addGrannyBtn.addEventListener('click', (e) => {
         },
         body: JSON.stringify({ id: e.target.dataset.id }),
       });
-
       usersListItem.remove();
       grannniesCounter.textContent = +grannniesCounter.textContent - 1;
+      for (let i = 0; i < cardInGrchildAlbum.length; i++) {
+        if (cardInGrchildAlbum[i].classList[5] === e.target.dataset.id) {
+          cardInGrchildAlbum[i].remove();
+        }
+      }
     });
   });
 

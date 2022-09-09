@@ -52,13 +52,16 @@ route.post('/addGranny', async (req, res) => {
   try {
     const grannyInsert = await Granny.findOne({ where: { email } });
     const findIdGrandChild = await GrandChild.findOne({ where: { username: user } });
-
     if (grannyInsert) {
-      const addGranny = await Family.create({ grannyId: grannyInsert.id, grandChildId: findIdGrandChild.id });
-
-      res.json(grannyInsert);
+      const family = await Family.findOne({ where: { grannyId: grannyInsert.id, grandChildId: findIdGrandChild.id } });
+      if (!family) {
+        const addGranny = await Family.create({ grannyId: grannyInsert.id, grandChildId: findIdGrandChild.id });
+        res.json(grannyInsert);
+      } else {
+        res.sendStatus(401);
+      }
     } else {
-      res.status(400);
+      res.sendStatus(400);
     }
   } catch (err) {
     console.log(err);
@@ -69,15 +72,14 @@ route.post('/addGranny', async (req, res) => {
 route.delete('/deleteGranny', async (req, res) => {
   const { id } = req.body;
 
-  console.log(id);
-
   try {
     const album = await Family.destroy({ where: { grannyId: id } });
-    console.log(album);
     res.json(album);
   } catch (err) {
     console.log(err);
   }
 });
+
+
 
 module.exports = route;

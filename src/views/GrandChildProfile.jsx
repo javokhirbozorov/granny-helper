@@ -113,8 +113,8 @@ function GrandChildProfile({ grannyAlbum, myGranny, session }) {
             <div className="row justify-content-center postsList">
               {
               grannyAlbum.map((grannyPost) => (
-                <div className="col-6 card m-3 p-0" key={grannyPost.id} style={{ width: '30rem' }}>
-                  <img src={grannyPost.imglink} className="card-img-top h-3" alt="Granny Post" style={{ width: '30rem', height: '12rem' }} />
+                <div className={`col-6 card m-3 p-0 card-in-grchild-album ${grannyPost.grannyId}`} key={grannyPost.id} style={{ width: '30rem' }}>
+                  <img src={grannyPost.imglink} className="card-img-top h-3" alt="Granny Post" style={{ width: '30rem', height: '12rem' }} name="card-in-grchild-album" />
                   {/* <div className="card-body">
                     <h5 className="card-title">Card title</h5>
                     <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
