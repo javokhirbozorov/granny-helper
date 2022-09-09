@@ -1,6 +1,6 @@
 const React = require('react');
 
-function Layout({ title, children }) {
+function Layout({ title, children, session }) {
   return (
     <html lang="en">
       <head>
@@ -12,10 +12,10 @@ function Layout({ title, children }) {
         {/* <!-- JavaScript Bundle with Popper --> */}
         <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossOrigin="anonymous" />
 
-        <link rel="stylesheet" href="/stylesheets/normalize.css" />
-        <link rel="stylesheet" href="/stylesheets/application.css" />
-
+        {/* <link rel="stylesheet" href="/stylesheets/normalize.css" />
+        <link rel="stylesheet" href="/stylesheets/application.css" /> */}
         <script defer src="/js/application.js" />
+        <script defer src="/js/client.js" />
         <link rel="stylesheet" href="/css/styles.css" />
         <title>{title}</title>
       </head>
@@ -25,32 +25,51 @@ function Layout({ title, children }) {
 
           <nav className="navbar navbar-expand-lg navbar-light bg-light">
 
-            <h2>Granny.com</h2>
+            <nav className="navbar bg-light">
+              <div className="container-fluid">
+                <a className="navbar-brand" href="/">
+                  <img src="https://cdn.freelance.ru/img/portfolio/pics/00/29/E3/2745317.jpg?mt=c291372b" alt="Logo" width="30" height="24" className="d-inline-block align-text-top" />
+                  Granny.com
+                </a>
+              </div>
+            </nav>
 
             <div className="collapse navbar-collapse sm-2" id="navbarNav">
-              <ul className="navbar-nav">
-                <li className="nav-item">
-                  <a className="nav-link" href="/granny.com/main">
-                    Главная
-                    <span className="sr-only">(current)</span>
-                  </a>
-                </li>
-                <li className="nav-item">
-                  <a className="nav-link" href="/granny.com/profile">Профиль</a>
-                </li>
-                <li className="nav-item">
-                  <a className="nav-link" href="/granny.com">Выход</a>
-                </li>
-                <li className="nav-item">
-                  <a className="nav-link" href="#">
-                    Войти
-                    <span className="sr-only">(current)</span>
-                  </a>
-                </li>
-                <li className="nav-item">
-                  <a className="nav-link" href="#">Регистрация</a>
-                </li>
-              </ul>
+
+              {
+                  (!session)
+                    ? (
+                      <ul className="navbar-nav">
+                        <li className="nav-item">
+                          <a className="nav-link" href="/login">Войти</a>
+                        </li>
+                        <li className="nav-item">
+                          <a className="nav-link" href="/sign-up">Регистрация</a>
+                        </li>
+                      </ul>
+                    )
+                    : (
+                      <nav className="navbar bg-light">
+                        <div className="container-fluid d-flex mb-3">
+                          <ul className="navbar-nav  ">
+                            <li className="nav-item p-2">
+                              <a className="nav-link" href="/profile">Профиль</a>
+                            </li>
+                            <li className="nav-item p-2">
+                              <a className="nav-link" href="/logout">Выход</a>
+                            </li>
+                          </ul>
+                          <span className="nav-text">
+                            Привет,
+                            {' '}
+                            {session.user}
+                          </span>
+                        </div>
+                      </nav>
+                    )
+
+                }
+
             </div>
 
           </nav>

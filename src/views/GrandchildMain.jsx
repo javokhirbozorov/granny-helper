@@ -5,7 +5,7 @@ function GrandchildMain({ img }) {
   console.log('IMG', img[0]);
   return (
     <Layout>
-      <h1>IMG</h1>
+      <h1>Grand Child</h1>
       {img.map((el) => (
         <div key={el.id} className="card" style={{ width: '18rem' }}>
           <img src={el.imglink} className="card-img-top" alt="..." />

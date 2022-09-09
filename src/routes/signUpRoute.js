@@ -9,7 +9,7 @@ const { Granny, GrandChild } = require('../../db/models');
 
 route.get('/', async (req, res) => {
   try {
-    const signUpComponent = React.createElement(SignUp, null);
+    const signUpComponent = React.createElement(SignUp, {});
     const html = ReactDOMServer.renderToStaticMarkup(signUpComponent);
     res.write('<!DOCTYPE html/>');
     res.end(html);
@@ -30,18 +30,18 @@ route.post('/', async (req, res) => {
       const newGranny = await Granny.create({ username: nameInput, email: emailInput, password });
       req.session.user = newGranny.username;
       req.session.save(() => {
-        res.redirect('/');
+        res.redirect('/profile');
       });
     } else {
       res.redirect('/login');
-    };
+    }
   } else {
     const findGrChild = await GrandChild.findOne({ where: { email: emailInput } });
     if (!findGrChild) {
       const newGrChild = await GrandChild.create({ username: nameInput, email: emailInput, password });
       req.session.user = newGrChild.username;
       req.session.save(() => {
-        res.redirect('/');
+        res.redirect('/GrandChildProfile');
       });
     } else {
       res.redirect('/login');

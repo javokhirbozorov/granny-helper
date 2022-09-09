@@ -1,14 +1,34 @@
 const React = require('react');
 const Layout = require('./Layout');
 // https://via.placeholder.com/300x400
-function GrannyProfile({ album }) {
-  console.log('😁😁😁', album[0].imglink, '😁😁😁');
+function GrannyProfile({ grannyAlbum, myGranndChild, session  }) {
   return (
-    <Layout>
+    <Layout session={session}>
+      <div className="addGrannyWindow">
+        <div className="closeGrannyWindow" />
+        <div className="input-group">
+          <input name="grannySearchInput" type="text" className="form-control grannySearchInput" placeholder="Grand-child email" aria-label="Recipient's username" aria-describedby="basic-addon2" />
+          <div className="input-group-append">
+            <button className="btn btn-outline-secondary grannySearchInputBtn" type="button">Добавить</button>
+          </div>
+        </div>
+
+        <div className="usersList">
+          {
+            myGranndChild.map((el) => (
+              <div className="alert alert-secondary usersListItem" role="alert" key={el.id}>
+                <span name="grannyMail">{el.email}</span>
+                <button type="button" className="btn btn-danger sm-0 grannyDeleteBtn" data-id={el.id}>Удалить</button>
+              </div>
+            ))
+          }
+        </div>
+      </div>
+
       <main className="w-75 m-auto">
         <section className="container hero d-flex justify-content-between" id="hero">
           <div className="profile-img col-3">
-            <img src="https://via.placeholder.com/150" className="profile-img m-auto" alt="" srcSet="" />
+            <img src="https://via.placeholder.com/150" className="profile-img m-auto" />
             <p className="username text-center">User Name</p>
           </div>
 
@@ -20,7 +40,8 @@ function GrannyProfile({ album }) {
             <div className="col-3 grandchild-count d-flex flex-column align-items-center m-5">
               {' '}
               <p>Grandchildren</p>
-              <p className="counter">0</p>
+              <button className="addGrannyBtn btn btn-secondary">+</button>
+              <p className="counter">{myGranndChild.length}</p>
             </div>
           </div>
 
@@ -61,7 +82,7 @@ function GrannyProfile({ album }) {
                         <li>
                           <hr className="dropdown-divider" />
                         </li>
-                        /
+
                         <li><a className="dropdown-item" href="/">Something else here</a></li>
                       </ul>
                     </li>
@@ -80,37 +101,56 @@ function GrannyProfile({ album }) {
         <section className="container post-section">
           <hr />
           <hr />
-          <form action="" method="POST">
-            {/* <div className="input-group mb-3">
-              <input type="text" name="imgUrlInput" className="form-control" placeholder="Place the image URL here." aria-label="Image URL" aria-describedby="addImgBtn" />
-              <button className="btn btn-primary" type="button" id="addImgBtn">Add Img</button>
-            </div> */}
-            <div className="mb-3 input-group ">
-              <label htmlFor="formFileMultiple" className="form-label">
-                Uplad photos here
-                <input className="form-control" type="file" id="formFileMultiple" multiple />
-              </label>
+          {/* <form id="forming" action="/grandChildProfile" method="POST">
+            <div className="input-group mb-3">
+              <input name="imglink" type="text" className="form-control imgUrlInput" placeholder="img url" style={{ height: '40px' }}/>
+              <div className="input-group-append">
+          
+                <button  id="start" className="btn btn-outline-secondary addImgBtn" type="submit" style={{
+                  borderRadius: '0px 5px 5px 0px',
+                  height: '40px',
+                  marginBottom: '4px' 
+                }}>Add img</button>
+              </div>
             </div>
-            <button className="btn btn-primary" type="button" id="addImgBtn">Add</button>
+          </form> */}
+
+          <form action="/profile" method="POST" id="forming">
+            <div className="mb-3 input-group ">
+              <input className="form-control" type="input" id="file" name="imglink" multiple placeholder="img url"style={{ height: '40px',  }}/>
+              <select id="voiceList" style={{
+                      height: '40px',
+                      wordWrap: 'normal',
+                      borderRadius: '0',
+                      width: '100px'
+                }}/>
+              <button className="btn btn-primary" type="submit" id="start" style={{
+                  borderRadius: '0px 5px 5px 0px',
+                  height: '40px',
+                  marginBottom: '4px' 
+                }}>Add img</button>
+            </div>
           </form>
 
           <div className="post-cards container">
             <div className="row justify-content-center">
               {
-            album.map((grannyPost) => (
-              <div className="col-6 card m-3 p-0" key={grannyPost.id} style={{ width: '30rem' }}>
-                <img src={grannyPost.imglink} className="card-img-top h-3" alt="Granny Post" style={{ width: '30rem', height: '12rem' }} />
-                <div className="card-body">
-                  <h5 className="card-title">Card title</h5>
-                  <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                  <a href="/" className="btn btn-success btn-lg">Play</a>
-                </div>
-              </div>
-
-            ))
-            }
+                grannyAlbum.map((grannyPost) => (
+                  <div className="col-6 card m-3 p-0" key={grannyPost.id} style={{ width: '30rem' }}>
+                    <div key={grannyPost.id} className="allcarddiv">
+                      <img src={grannyPost.imglink} className="card-img-top h-3" alt="Granny Post" style={{ width: '30rem', height: '12rem' }} />
+                      <div className="card-body">
+                        <h5 className="card-title">Text</h5>
+                        <p className="card-text">{grannyPost.imgText}</p>
+                        <button className="btn btn-success btn-lg play" type="submit" key={grannyPost.id}>Play</button>
+                      </div>
+                    </div>
+                  </div>
+                ))
+              }
             </div>
           </div>
+
         </section>
       </main>
     </Layout>
