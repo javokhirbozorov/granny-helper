@@ -14,14 +14,8 @@ function Layout({ title, children, session }) {
 
         {/* <link rel="stylesheet" href="/stylesheets/normalize.css" />
         <link rel="stylesheet" href="/stylesheets/application.css" /> */}
-<<<<<<< HEAD
-
-        {/* <script defer src="/js/application.js" /> */}
-        {/* <script defer src="/js/client.js" /> */}
-=======
         <script defer src="/js/application.js" />
         <script defer src="/js/client.js" />
->>>>>>> f72895131facc85a14d9ebf3d0f55a8dc4e79181
         <link rel="stylesheet" href="/css/styles.css" />
         <title>{title}</title>
       </head>

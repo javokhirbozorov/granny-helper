@@ -36,12 +36,12 @@ console.log('CLIENT');
 
 const { body } = document;
 
-const addImgform = document.getElementById('addImgForm');
-console.log(body);
-const addImgFormInput = addImgform.elements[0];
-const postsList = document.querySelector('.postsList');
+const addImgform = document?.getElementById('addImgForm');
+const addImgFormInput = addImgform?.elements[0];
+const postsList = document?.querySelector('.postsList');
 
-addImgform.addEventListener('submit', async (e) => {
+
+addImgform?.addEventListener('submit', async (e) => {
   e.preventDefault();
 
   const imgUrl = addImgFormInput.value;
@@ -58,7 +58,7 @@ addImgform.addEventListener('submit', async (e) => {
       },
       body: JSON.stringify({ imgUrlInput: imgUrl }),
     });
-
+    
     if (res.ok) {
       const data = await res.json();
       const imgCard = cardTemplate(data);
@@ -97,7 +97,6 @@ function cardTemplate(data) {
 
 const addGrannyBtn = document?.querySelector('.addGrannyBtn');
 const grannyDeleteBtn = document?.querySelectorAll('.grannyDeleteBtn');
-
 
 addGrannyBtn?.addEventListener('click', (e) => {
 
@@ -174,23 +173,126 @@ addGrannyBtn?.addEventListener('click', (e) => {
 })
 
 
-function addGrannyWindowTemplate() {
-  return `
-  <div class="addGrannyWindow">
-    <div class='closeGrannyWindow'></div>
-    <div class="input-group">
-      <input type="text" class="form-control grannySearchInput" placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="basic-addon2">
-      <div class="input-group-append">
-        <button class="btn btn-outline-secondary grannySearchInputBtn" type="button">Добавить</button>
-      </div>
-    </div>
- 
-    <div class="usersList">
-      <div class="alert alert-secondary usersListItem" role="alert">
-        Марья Петровна
-        <button type="button" class="btn btn-danger sm-0">Удалить</button>
-      </div>
-    </div>
-  </div>
-  `;
-}
+// addImgform?.addEventListener('submit', async (e) => {
+//   e.preventDefault();
+
+//   const imgUrl = addImgFormInput.value;
+
+//   const regExp = /^https?:\/\/.{1,}.(jpg|png)$/i;
+
+//   const URL_IS_VALID = regExp.test(imgUrl);
+
+//   if (URL_IS_VALID) {
+//     const res = await fetch('/grandChildProfile', {
+//       method: 'POST',
+//       headers: {
+//         'Content-type': 'application/json',
+//       },
+//       body: JSON.stringify({ imgUrlInput: imgUrl }),
+//     });
+    
+//     if (res.ok) {
+//       const data = await res.json();
+//       const imgCard = cardTemplate(data);
+
+//       postsList.insertAdjacentHTML('afterbegin', imgCard);
+//     } else {
+//       console.log(res);
+//     }
+//   } else {
+//     addImgFormInput.style.border = '1px solid red';
+//     addImgFormInput.style.color = 'red';
+//     addImgFormInput.value = 'Invalid url';
+
+//     setTimeout(() => {
+//       addImgFormInput.style.border = '';
+//       addImgFormInput.style.color = '';
+//       addImgFormInput.value = '';
+//     }, 1000);
+//   }
+// });
+
+
+
+
+// ==================================================
+
+
+
+
+
+
+// addGrannyBtn?.addEventListener('click', (e) => {
+
+//   const background = document.createElement('div');
+//   background.classList.add('background');
+
+//   const grannniesCounter = document.querySelector('.counter');
+
+//   const closeGrannyWindow = document.querySelector('.closeGrannyWindow');
+//   const grannyWindow = document.querySelector('.addGrannyWindow');
+
+//   const grannyUserList = document.querySelector('.usersList');
+//   const usersListItem = document.querySelector('.usersListItem');
+
+//   const grannySearchInputBtn = document.querySelector('.grannySearchInputBtn');
+//   const grannySearchInput = document.querySelector('.grannySearchInput');
+
+//   body.prepend(background);
+//   grannyWindow.style.display = 'block';
+
+//   grannySearchInputBtn.addEventListener('click', async (e) => {
+//     const inputValue = grannySearchInput.value;
+
+
+//     if (inputValue.length > 1) {
+//       const res = await fetch('/profile/addGrandChild', {
+//         method: 'POST',
+//         headers: {
+//           'Content-type': 'application/json',
+//         },
+//         body: JSON.stringify({ email: inputValue }),
+//       });
+
+//       if (res.ok) {
+//         const data = await res.json();
+//         console.log(data);
+
+//         const grandChild = `
+//         <div class="alert alert-secondary usersListItem" role="alert">
+//           ${data.email}
+//           <button type="button" class="btn btn-danger sm-0 grannyDeleteBtn">Удалить</button>
+//         </div>
+//         `;
+//         grannyUserList.insertAdjacentHTML('afterbegin', grandChild);
+//         grannniesCounter.textContent = +grannniesCounter.textContent + 1;
+//       } else {
+//         console.log(res);
+//       }
+//     }
+//   });
+
+  
+
+//   grannyDeleteBtn?.forEach(el => {
+//     el.addEventListener('click', async (e) => {
+//       console.log(e);
+//       const res = await fetch('/grandChildProfile/deleteGranny', {
+//         method: 'DELETE',
+//         headers: {
+//           'Content-type': 'application/json',
+//         },
+//         body: JSON.stringify({ id: e.target.dataset.id }),
+//       });
+
+//       usersListItem.remove();
+//       grannniesCounter.textContent = +grannniesCounter.textContent - 1;
+//     });
+//   });
+
+//   closeGrannyWindow?.addEventListener('click', () => {
+//     grannyWindow.style.display = 'none';
+//     background.remove();
+//   });
+
+// })
